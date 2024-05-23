@@ -1,0 +1,5 @@
+- Get images from an API, with caption
+- Create scoreboard which counts current score, and saves your best score youve gotten so far
+- Function to randomize cards on each click
+- Figure out component structure
+- where to use "useState", and "useEffect" hooks
