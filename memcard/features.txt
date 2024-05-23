@@ -1,6 +1,9 @@
-- Get images from an API, with caption
+- Get images from an API, with caption: Done
+
 - Create scoreboard which counts current score, and saves your best score youve gotten so far
 - Function to randomize cards on each click
 - Figure out component structure
 - where to use "useState", and "useEffect" hooks
 - UI for design (work on this last)
+- some reaciton if they win the game
+
