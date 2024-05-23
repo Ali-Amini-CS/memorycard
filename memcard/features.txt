@@ -3,3 +3,4 @@
 - Function to randomize cards on each click
 - Figure out component structure
 - where to use "useState", and "useEffect" hooks
+- UI for design (work on this last)
