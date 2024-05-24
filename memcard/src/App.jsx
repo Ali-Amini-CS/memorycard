@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import React from 'react'
-import PokemonImages from './components/images'
+import PokemonBoard from './components/PokemonBoard'
 function App() {
 
   return (
     <>
-    <PokemonImages></PokemonImages>
+    <PokemonBoard></PokemonBoard>
     </>
   )
 }

@@ -1,8 +1,9 @@
-import axios from 'axios';
+// PokemonBoard.js
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import PokemonImage from './PokemonImage';
+import {ShuffleCards} from './shufflecards';
 
-
-/**/
 const getRandomPokemonIds = (count, max) => {
   const ids = new Set();
   while (ids.size < count) {
@@ -13,8 +14,7 @@ const getRandomPokemonIds = (count, max) => {
 };
 
 
-/* */
-const PokemonImages = () => {
+const PokemonBoard = () => {
   const [pokemons, setPokemons] = useState([]);
 
   useEffect(() => {
@@ -34,6 +34,22 @@ const PokemonImages = () => {
     fetchPokemons();
   }, []);
 
-}
+  const reshufflePokemons = () => {
+    setPokemons((prevPokemons) => ShuffleCards(prevPokemons));
+  };
 
-export default PokemonImages;
+  return (
+    <div>
+      {pokemons.map((pokemon, index) => (
+        <PokemonImage
+          key={index}
+          name={pokemon.name}
+          image={pokemon.image}
+          onClick={reshufflePokemons}
+        />
+      ))}
+    </div>
+  );
+};
+
+export default PokemonBoard;
