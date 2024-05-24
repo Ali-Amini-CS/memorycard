@@ -1,4 +1,8 @@
-// shufflecards.js
+
+/*
+ Following Code was adapted from Fisher-Yates Algorithm found on StackOverflow
+ : https://stackoverflow.com/a/16864427/882918
+*/
 export const ShuffleCards = (array) => {
   const shuffled = [...array];
   for (let i = shuffled.length - 1; i > 0; i--) {

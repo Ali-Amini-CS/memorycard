@@ -2,7 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import PokemonImage from './PokemonImage';
-import {ShuffleCards} from './shufflecards';
+import { ShuffleCards } from './shufflecards';
+import Scoreboard from './gameboard/scoreboard';
 
 const getRandomPokemonIds = (count, max) => {
   const ids = new Set();
@@ -13,9 +14,11 @@ const getRandomPokemonIds = (count, max) => {
   return Array.from(ids);
 };
 
-
 const PokemonBoard = () => {
   const [pokemons, setPokemons] = useState([]);
+  const [score, setScore] = useState(0);
+  const [clickedImages, setClickedImages] = useState(new Set());
+  const [lost,setLost] = useState(false);
 
   useEffect(() => {
     const fetchPokemons = async () => {
@@ -34,18 +37,33 @@ const PokemonBoard = () => {
     fetchPokemons();
   }, []);
 
-  const reshufflePokemons = () => {
+  const onPictureClick = (name) => {
     setPokemons((prevPokemons) => ShuffleCards(prevPokemons));
+
+    setClickedImages((prevClickedImages) => {
+      if (prevClickedImages.has(name)) {
+          setLost(true);
+        setScore(0);
+        return new Set(); 
+      } else {
+        const newClickedImages = new Set(prevClickedImages);
+        newClickedImages.add(name);
+        setScore((prevScore) => prevScore + 1);
+        return newClickedImages;
+      }
+    });
   };
 
   return (
     <div>
+      <Scoreboard score={score} />
+      {lost && <div>You lost, try again!</div>}
       {pokemons.map((pokemon, index) => (
         <PokemonImage
           key={index}
           name={pokemon.name}
           image={pokemon.image}
-          onClick={reshufflePokemons}
+          onClick={() => onPictureClick(pokemon.name)} 
         />
       ))}
     </div>
