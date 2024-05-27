@@ -4,6 +4,7 @@ import axios from 'axios';
 import PokemonImage from './PokemonImage';
 import { ShuffleCards } from './shufflecards';
 import Scoreboard from './gameboard/scoreboard';
+import "./pokemonBoard.css";
 
 const getRandomPokemonIds = (count, max) => {
   const ids = new Set();
