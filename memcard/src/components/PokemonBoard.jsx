@@ -56,11 +56,11 @@ const PokemonBoard = () => {
   };
 
   return (
-    <div>
+    <div className='pokemonboard'>
       <Scoreboard score={score} />
       {lost && <div>You lost, try again!</div>}
       {pokemons.map((pokemon, index) => (
-        <PokemonImage
+        <PokemonImage className="pokemon"
           key={index}
           name={pokemon.name}
           image={pokemon.image}
